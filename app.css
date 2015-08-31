@@ -1,0 +1,4 @@
+/* Image cover | https://github.com/louisremi/background-size-polyfill */
+body {-ms-behavior: url(htc/backgroundsize.min.htc); behavior: url(htc/backgroundsize.min.htc);}
+.cover {background: url(assets/nophoto.jpg) center no-repeat; background-size:cover; display:inline-block; vertical-align:top;}
+.cover img {display:none;}
