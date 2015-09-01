@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Pesquisa de fontes</title>
+	
+	<!-- JQuery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/flatly/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+	
+	<!-- AngularJS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.min.js"></script>
+	<script>
+	var app = angular.module('App', []).controller('AppController', function($scope, $http) {
+		
+		$scope.files = [];
+		
+		$http.get('https://api.github.com/repos/agenciadecricao/assets/git/refs').success(function(json) {
+			$http.get('https://api.github.com/repos/agenciadecricao/assets/git/trees/'+ json[0].object.sha +'?recursive=1').success(function(files) {
+				for(var i in files.tree) {
+					f = files.tree[i];
+					if (f.path.indexOf("stylesheet.css")>-1) {
+						f.name = f.path.replace('fonts/', '').replace('/stylesheet.css', '').replace('-', ' ').replace(/^([a-z\u00E0-\u00FC])|\s+([a-z\u00E0-\u00FC])/g, function($1) {
+							return $1.toUpperCase();
+						});
+						
+						f.fontname = f.path.replace('fonts/', '').replace('/stylesheet.css', '').replace('-', '');
+						
+						$scope.files.push(f);
+					}
+				}
+			});
+		});
+		
+		$scope.q = "";
+		$scope.filterFiles = function(obj) {
+			return obj.name.toLowerCase().indexOf( $scope.q.toLowerCase() )>-1 ? true : false;
+		}
+		
+		
+	});
+	</script>
+	<style>
+	.site-width {width:1024px; margin:0 auto;}
+	</style>
+	
+</head>
+<body ng-app="App" ng-controller="AppController">
+	
+	<br>
+	<div class="site-width">
+	
+		<div class="input-group col-xs-6">
+			<input type="text" class="form-control" placeholder="Pesquisar" ng-model="q">
+			<div class="input-group-addon"><i class="fa fa-search"></i></div>
+		</div>
+		
+		<hr>
+	
+		<div style="background:#eee; padding:10px; margin:0 0 10px 0; font:12px courier;" ng-repeat="f in files | filter:filterFiles">
+			&lt;!-- {{f.name}} --&gt; <br>
+			&lt;link rel="stylesheet" href="https://cdn.rawgit.com/agenciadecricao/assets/master/{{f.path}}" &gt; <br>
+			&lt;style&gt;
+			.font-{{f.fontname}} {font-family: {{f.fontname}};}
+			&lt;/style&gt;
+		</div>
+		
+	</div>
+</body>
+</html>
