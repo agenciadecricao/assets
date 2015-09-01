@@ -16,7 +16,7 @@
 function $$(s, f, c) { if ($(s).length>0) head.load(f, c); }
 
 
-function _modal(el, call) { $(el).fadeToggle(200, call) }
+function _popup(el, call) { $(el).fadeToggle(200, call) }
 
 
 $(function() {
