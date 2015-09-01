@@ -66,6 +66,19 @@ function _init() {
 		});
 	});
 	
+	
+	
+	/* SlickNav */
+	f = [];
+	f.push("https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.4/slicknav.min.css");
+	f.push("https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.4/jquery.slicknav.min.js");
+	$$("[data-slicknav]", f, function() {
+		$("[data-slicknav]").each(function() {
+			var config = $(this).dataJson("data-slicknav");
+			$(this).slicknav(config);
+		});
+	});
+	
 }
 
 
