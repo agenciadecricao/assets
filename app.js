@@ -1,10 +1,19 @@
-/* Autoload: Carrega plugin JQuery caso elemento exista na página
-*  $(".element", ["file.js", "file.css"], function() {
-*		$(".element").plugin();
-*	});
-*/
-function $$(s, f, c) { if ($(s).length>0) head.load(f, c); }
+/**
+ * Conterte um atributo
+ * @param  {string}   attr   Nome do atributo
+ * @param  {object}   def    Objeto default, utiliza $.extend() do jquery
+ * @return {json}            Objeto json
+ */
+(function($) { $.fn.dataJson = function(attr, def) { def = def || {}; data = $(this).attr(attr) || "{}"; try { eval('data = '+data+';'); } catch(e) {data = {};} data = $.extend(def, data); return data;}; })(jQuery);
 
+
+/**
+ * Carrega um plugin JQuery apenas se elemento selecionado existir na página
+ * @param {string}   s Seletor jquery
+ * @param {array}    f Array de arquivos css ou js
+ * @param {function} c Callback que será executado depois que os arquivos terminarem de carregar
+ */
+function $$(s, f, c) { if ($(s).length>0) head.load(f, c); }
 
 
 
@@ -14,7 +23,17 @@ function _init() {
 	
 	/* Redactor */
 	
+	
 	/* Flickity */
+	f = [];
+	f.push("https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.0/flickity.min.css");
+	f.push("https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.0/flickity.pkgd.min.js");
+	$$("[data-flickity]", f, function() {
+		$("[data-flickity]").each(function() {
+			var config = $(this).dataJson("data-flickity");
+			$(this).flickity(config);
+		});
+	});
 	
 }
 
