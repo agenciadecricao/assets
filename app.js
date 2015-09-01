@@ -29,7 +29,7 @@ function _init() {
 	$$("[data-redactor]", f, function() {
 		$("[data-redactor]").each(function() {
 			var config = $(this).dataJson("data-redactor", {});
-			$(this).flickity(config);
+			$(this).redactor(config);
 		});
 	});
 	
