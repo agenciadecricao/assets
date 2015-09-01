@@ -16,7 +16,6 @@
 function $$(s, f, c) { if ($(s).length>0) head.load(f, c); }
 
 
-function _popup(el, call) { $(el).fadeToggle(200, call) }
 
 
 $(function() {
@@ -26,6 +25,10 @@ $(function() {
 	$(window).on("keyup", function(ev) { if (ev.keyCode==27) $(".popup").fadeOut(200); });
 	$("body").on("click", ".popup", function(ev) {
 		if (ev.target==this) $(this).fadeToggle(200);
+	});
+	$("body").on("click", "[data-popup]", function(ev) {
+		ev.preventDefault();
+		$( $(this).attr("data-popup") ).fadeToggle(200);
 	});
 	
 });
