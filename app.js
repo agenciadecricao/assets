@@ -79,6 +79,17 @@ function _init() {
 		});
 	});
 	
+	
+	/* Image cover */
+	$$(".cover", ["https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"], function() {
+		$(".cover:not(.has-cover)").each(function() {
+			$(this).addClass("has-cover");
+			var src = $(this).find("img").hide().attr("src");
+			$(this).backstretch(src);
+		});
+	});
+	
+	
 }
 
 

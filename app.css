@@ -1,9 +1,3 @@
-/* Image cover | https://github.com/louisremi/background-size-polyfill */
-body {-ms-behavior: url(htc/backgroundsize.min.htc); behavior: url(htc/backgroundsize.min.htc);}
-.cover {background: url(assets/nophoto.jpg) center no-repeat; background-size:cover; display:inline-block; vertical-align:top;}
-.cover img {display:none;}
-
-
 /* Easy modal */
 .popup {position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.5);}
 .popup-content {display:block; position:fixed; top: 50%; left: 50%; box-sizing:border-box; transform:translate(-50%, -50%); max-height:100%; overflow:auto;}
