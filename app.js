@@ -16,11 +16,12 @@
 function $$(s, f, c) { if ($(s).length>0) head.load(f, c); }
 
 
+function _modal(el, call) { $(el).fadeToggle(200, call) }
+
 
 $(function() {
 	
 	/* Easy popup */
-	function _modal(el, call) { $(el).fadeToggle(200, call) }
 	$(".popup:not(.popup-show)").hide();
 	$(window).on("keyup", function(ev) { if (ev.keyCode==27) $(".popup").fadeOut(200); });
 	$("body").on("click", ".popup", function(ev) {
