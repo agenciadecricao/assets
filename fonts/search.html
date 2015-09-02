@@ -33,6 +33,8 @@
 						
 						f.fontname = f.path.replace('fonts/', '').replace('/stylesheet.css', '').replace(/-/gi, '');
 						
+						f.cdn_rawgit = 'https://cdn.rawgit.com/agenciadecricao/assets/'+ json[0].object.sha +'/'+f.path;
+						
 						$scope.files.push(f);
 					}
 				}
@@ -64,14 +66,12 @@
 		
 		<hr>
 	
-		<div style="background:#eee; padding:10px; margin:0 0 10px 0; font:12px courier;" ng-repeat="f in files | filter:filterFiles">
-			&lt;!-- {{f.name}} --&gt; <br>
-			&lt;link rel="stylesheet" href="https://cdn.rawgit.com/agenciadecricao/assets/master/{{f.path}}" &gt; <br>
-			&lt;style&gt;
-			.font-{{f.fontname}} {font-family: {{f.fontname}};}
-			&lt;/style&gt;
-		</div>
-		
+<textarea wrap="off" class="form-control" rows="3" style="background:#eee; margin:0 0 10px 0; font:12px courier; wit" onclick="$(this).select();" ng-repeat="f in files | filter:filterFiles">
+&lt;!-- {{f.name}} --&gt; <br>
+&lt;link rel="stylesheet" href="{{f.cdn_rawgit}}" &gt; <br>
+&lt;style&gt;.font-{{f.fontname}} {font-family: {{f.fontname}};}&lt;/style&gt;
+</textarea>
+
 	</div>
 </body>
 </html>
