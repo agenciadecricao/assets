@@ -5,17 +5,17 @@
 
 /* Cover animado | <div class="cover cover-animate"><img src="file.jpg" /></div> */
 .cover.cover-animate img {
-    -webkit-transition: all 1s ease; /* Safari and Chrome */
-    -moz-transition: all 1s ease; /* Firefox */
-    -o-transition: all 1s ease; /* IE 9 */
-    -ms-transition: all 1s ease; /* Opera */
-    transition: all 1s ease;
-        max-width: 100%;
+	-webkit-transition: all 300ms ease; /* Safari and Chrome */
+	-moz-transition: all 300ms ease; /* Firefox */
+	-o-transition: all 300ms ease; /* IE 9 */
+	-ms-transition: all 300ms ease; /* Opera */
+	transition: all 300ms ease;
+	max-width: 100%;
 }
 .cover.cover-animate:hover img {
-    -webkit-transform:scale(1.25); /* Safari and Chrome */
-    -moz-transform:scale(1.25); /* Firefox */
-    -ms-transform:scale(1.25); /* IE 9 */
-    -o-transform:scale(1.25); /* Opera */
-     transform:scale(1.25);
+	-webkit-transform:scale(1.10); /* Safari and Chrome */
+	-moz-transform:scale(1.10); /* Firefox */
+	-ms-transform:scale(1.10); /* IE 9 */
+	-o-transform:scale(1.10); /* Opera */
+	transform:scale(1.10);
 }
