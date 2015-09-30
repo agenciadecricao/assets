@@ -70,6 +70,7 @@
 	</script>
 	<style>
 	.site-width {width:1024px; margin:0 auto;}
+		.btn:focus:after {content:"\25BA";}
 	</style>
 	
 </head>
@@ -87,7 +88,7 @@
 		
 		
 		<div ng-repeat="f in files | filter:filterFiles">
-			<a href="javascript:;" class="btn btn-xs" ng-click="test(f, $event);">Testar</a>
+			<a href="javascript:;" class="btn btn-primary btn-xs" ng-click="test(f, $event);">Testar</a>
 			<div style="overflow:auto; white-space:nowrap; background:#f5f5f5; padding:10px;">
 				&lt;!-- {{f.name}} --&gt; <br>
 				&lt;link rel="stylesheet" href="{{f.cdn_rawgit}}" &gt; <br>
