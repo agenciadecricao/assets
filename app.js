@@ -44,8 +44,8 @@ function _init() {
 	
 	/* Redactor */
 	f = [];
-	f.push("https://cdn.rawgit.com/agenciadecricao/assets/master/jquery-redactor/redactor.10.1.2.css");
-	f.push("https://cdn.rawgit.com/agenciadecricao/assets/master/jquery-redactor/redactor.10.1.2.js");
+	f.push("https://cdn.jsdelivr.net/gh/agenciadecricao/assets/jquery-redactor/redactor.10.1.2.css");
+	f.push("https://cdn.jsdelivr.net/gh/agenciadecricao/assets/jquery-redactor/redactor.10.1.2.js");
 	$$("[data-redactor]", f, function() {
 		$("[data-redactor]").each(function() {
 			var config = $(this).dataJson("data-redactor", {});
